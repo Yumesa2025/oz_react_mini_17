@@ -1,12 +1,13 @@
 import type { Movie } from "../../types/movie";
 import { css } from "styled-system/css";
+import { useNavigate } from "react-router-dom";
 
 interface MovieCardProps {
   movie: Movie;
 }
 
 const cardStyle = css({
-  width: "160px",
+  width: "100%",
   borderRadius: "8px",
   overflow: "hidden",
   border: "2px solid",
@@ -52,9 +53,10 @@ const ratingStyle = css({
 
 const MovieCard = ({ movie }: MovieCardProps) => {
   const imageUrl = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
+  const navigate = useNavigate();
 
   return (
-    <div className={cardStyle}>
+    <div className={cardStyle} onClick={() => navigate(`/movie/${movie.id}`)}>
       <img className={posterStyle} src={imageUrl} alt={movie.title} />
       <div className={infoStyle}>
         <p className={titleStyle}>{movie.title}</p>
