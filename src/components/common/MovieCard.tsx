@@ -56,7 +56,7 @@ const MovieCard = ({ movie }: MovieCardProps) => {
   const navigate = useNavigate();
 
   return (
-    <div className={cardStyle} onClick={() => navigate(`/movie/${movie.id}`)}>
+    <div className={cardStyle} onClick={() => navigate(`/details`)}>
       <img className={posterStyle} src={imageUrl} alt={movie.title} />
       <div className={infoStyle}>
         <p className={titleStyle}>{movie.title}</p>
