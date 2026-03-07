@@ -54,21 +54,19 @@ const ratingStyle  = css({
     marginBottom: "8px",  
 });
 
-
-
 const HeroBanner = () => {
     const movies = movieListData.results as Movie[];
-    const [currentIndex, setCurrenIndex] = useState(0);
+    const [curIndex, setCurIndex] = useState(0);
 
     useEffect(() => {
         const timer = setInterval(()=>{
-            setCurrenIndex((prev)=> (prev+1) % movies.length);
+            setCurIndex((prev)=> (prev+1) % movies.length); 
         }, 5000);
         return () => clearInterval(timer);
     });
     
-    const bannerMovie = movies[currentIndex];
-    const bannerMovieUrl = `https://image.tmdb.org/t/p/original${bannerMovie.backdrop_path}`;
+    const bannerMovie = movies[curIndex];
+    const bannerMovieUrl = `https://image.tmdb.org/t/p/original${bannerMovie.poster_path}`;
 
     return(
         <div className={bannerStyle}>
